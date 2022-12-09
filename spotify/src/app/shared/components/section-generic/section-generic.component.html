@@ -5,7 +5,7 @@
     <!--mode es una variable que declaramos en el ts. Luego le damos valor donde utilizamos la etiqueta de section-generig-->
     <ul class="player--list" [ngClass]="{'card-small':mode === 'small','card-big':mode === 'big'}">
       <li *ngFor="let track of dataTracks">
-        {{track.name}}
+        <app-card-player [track]="track" [mode]="mode"></app-card-player>
         <!-- <app-card-player [track]="track" [mode]="mode"></app-card-player>-->
       </li>
     </ul>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TrackModel } from '@core/models/tracks.model';
 
 @Component({
   selector: 'app-section-generic',
@@ -12,7 +13,7 @@ export class SectionGenericComponent implements OnInit {
   //a la variable mode le decimos que puede tener solo dos valore que pueden ser big o small y por defecto es big
   @Input() mode: 'big' | 'small' = 'big'
   //Pa
-  @Input() dataTracks: Array<any> = []
+  @Input() dataTracks: Array<TrackModel> = []
 
   constructor() { }
 
