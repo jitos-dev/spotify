@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MediaPlayerComponent implements OnInit {
 
+  mockCover: any = {
+    cover: '',
+    name: '',
+    album: ''
+  }
+
+  multimediaService: any = {
+
+  }
+
   constructor() { }
 
   ngOnInit() {
