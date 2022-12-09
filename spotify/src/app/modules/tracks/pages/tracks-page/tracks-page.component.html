@@ -1,1 +1,13 @@
-<p>tracks-page works!</p>
+<div class="tracks-page">
+  <!--section top (small)-->
+  <!--Le ponemos comilla simple dentro de las doble porque espera un string y si no las ponemos da fallo-->
+  <app-section-generic [dataTracks]="mockTrackList" [mode]="'small'"
+    [title]="'¡La mejor música del mundo!'"></app-section-generic>
+  <!-- <app-section-generic [dataTracks]="tracksTrending" [mode]="'small'" [title]="'¡La mejor música del mundo!'">
+  </app-section-generic> -->
+  <!--section medium (big)-->
+  <app-section-generic [dataTracks]="mockTrackList" [mode]="'big'"
+    [title]="'Lo mejor de Electrónica'"></app-section-generic>
+  <!-- <app-section-generic [dataTracks]="tracksRandom" [mode]="'big'" [title]="'Lo mejor de Electronica'">
+  </app-section-generic> -->
+</div>
