@@ -20,7 +20,9 @@ import { PlayListBodyComponent } from './components/play-list-body/play-list-bod
     MediaPlayerComponent,
     HeaderUserComponent,
     CardPlayerComponent,
-    SectionGenericComponent
+    SectionGenericComponent,
+    PlayListBodyComponent,
+    PlayListHeaderComponent
   ]
 })
 export class SharedModule { }
