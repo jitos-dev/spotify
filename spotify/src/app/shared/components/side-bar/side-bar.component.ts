@@ -65,6 +65,19 @@ export class SideBarComponent implements OnInit {
         router: ['/']
       }
     ]
+
+    console.log(this.mainMenu.defaultOptions);
+  }
+
+  goTo($event: any): void {
+    this.router.navigate(['/', 'favorites'], {
+      queryParams: {
+        key1: 'value1',
+        key2: 'value2',
+        key3: 'value3'
+      }
+    })
+    console.log($event)
   }
 
 }

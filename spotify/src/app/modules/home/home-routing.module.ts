@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+/*El path: ** ese lo podemos cambiar para hacer una ruta /home que redirija en vez de 
+a /tracks */
 
 const routes: Routes = [
   {
@@ -16,7 +18,7 @@ const routes: Routes = [
     loadChildren: () => import('@modules/favorites/favorites.module').then(m => m.FavoritesModule)
   },
   {
-    path: '**',//TODO 404 cuando no existe la ruta
+    path: '**',//TODO 404 cuando no existe la ruta. 
     redirectTo: '/tracks'
   }
 
