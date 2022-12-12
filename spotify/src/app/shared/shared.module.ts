@@ -8,6 +8,8 @@ import { SectionGenericComponent } from './components/section-generic/section-ge
 import { PlayListHeaderComponent } from './components/play-list-header/play-list-header.component';
 import { PlayListBodyComponent } from './components/play-list-body/play-list-body.component';
 import { RouterModule } from '@angular/router';
+import { HomeModule } from '../modules/home/home.module';
+import { HistoryModule } from '../modules/history/history.module';
 
 
 
@@ -15,7 +17,7 @@ import { RouterModule } from '@angular/router';
   declarations: [SideBarComponent, MediaPlayerComponent, HeaderUserComponent, CardPlayerComponent, SectionGenericComponent, PlayListHeaderComponent, PlayListBodyComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     SideBarComponent,
