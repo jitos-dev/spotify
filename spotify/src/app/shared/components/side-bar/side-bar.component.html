@@ -1,7 +1,8 @@
 <div class="side-bar">
   <div><i class="uil uil-ellipsis-h"></i></div>
   <ul class="side-bar__list list-one">
-    <li *ngFor="let item of mainMenu.defaultOptions"> <!-- [routerLink]="item.router" [queryParams]="item.query"-->
+    <li [routerLink]="item.router" [queryParams]="item.query" *ngFor="let item of mainMenu.defaultOptions">
+      <!-- <span>{{item.router}}</span> -->
       <div class="list-wrapper-item">
         <i [ngClass]="['uil',item.icon]"></i>
         <span class="side-bar__list list-label">{{item.name}}</span>
