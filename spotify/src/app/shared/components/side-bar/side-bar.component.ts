@@ -1,5 +1,5 @@
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -7,6 +7,7 @@ import { Router, RouterOutlet } from '@angular/router';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
+
 
   mainMenu: {
     defaultOptions: Array<any>, accessLink: Array<any>
@@ -17,25 +18,6 @@ export class SideBarComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    // this.mainMenu.defaultOptions = [
-    //   {
-    //     name: 'Home',
-    //     icon: 'uil uil-estate',
-    //     router: ['/', 'auth']
-    //   },
-    //   {
-    //     name: 'Buscar',
-    //     icon: 'uil uil-search',
-    //     router: ['/', 'history']
-    //   },
-    //   {
-    //     name: 'Tu biblioteca',
-    //     icon: 'uil uil-chart',
-    //     router: ['/', 'favorites'],
-    //     query: { hola: 'mundo' }
-    //   }
-    // ]
-
     this.mainMenu.defaultOptions = [
       {
         name: 'Home',
@@ -69,32 +51,46 @@ export class SideBarComponent implements OnInit {
     this.customOptions = [
       {
         name: 'Mi lista º1',
-        router: ['/']
+        router: ['/', 'favorites']
       },
       {
         name: 'Mi lista º2',
-        router: ['/']
+        router: ['/', 'favorites']
       },
       {
         name: 'Mi lista º3',
-        router: ['/']
+        router: ['/', 'favorites']
       },
       {
         name: 'Mi lista º4',
-        router: ['/']
+        router: ['/', 'favorites']
       }
     ]
 
   }
 
-  goTo($event: any): void {
-    this.router.navigate(['/', 'favorites'], {
+  // goTo($event: any): void {
+  //   this.router.navigate(['/', 'favorites'], {
+  //     queryParams: {
+  //       key1: 'value1',
+  //       key2: 'value2',
+  //       key3: 'value3'
+  //     }
+  //   })
+  //   console.log($event)
+  // }
+
+  goTo($event, url): void {
+    this.router.navigate(url);
+    console.log($event);
+    console.log(url);
+  }
+
+  goToLista($event, url, param): void {
+    this.router.navigate(url, {
       queryParams: {
-        key1: 'value1',
-        key2: 'value2',
-        key3: 'value3'
+        lista: param
       }
     })
-    console.log($event)
   }
 }

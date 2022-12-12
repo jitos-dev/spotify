@@ -12,11 +12,20 @@ import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [SideBarComponent, MediaPlayerComponent, HeaderUserComponent, CardPlayerComponent, SectionGenericComponent, PlayListHeaderComponent, PlayListBodyComponent],
+  declarations: [
+    SideBarComponent,
+    MediaPlayerComponent,
+    HeaderUserComponent,
+    CardPlayerComponent,
+    SectionGenericComponent,
+    PlayListHeaderComponent,
+    PlayListBodyComponent],
+
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
+
   exports: [
     SideBarComponent,
     MediaPlayerComponent,
