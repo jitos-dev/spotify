@@ -51,32 +51,46 @@ export class SideBarComponent implements OnInit {
     this.customOptions = [
       {
         name: 'Mi lista º1',
-        router: ['/']
+        router: ['/', 'favorites']
       },
       {
         name: 'Mi lista º2',
-        router: ['/']
+        router: ['/', 'favorites']
       },
       {
         name: 'Mi lista º3',
-        router: ['/']
+        router: ['/', 'favorites']
       },
       {
         name: 'Mi lista º4',
-        router: ['/']
+        router: ['/', 'favorites']
       }
     ]
 
   }
 
-  goTo($event: any): void {
-    this.router.navigate(['/', 'favorites'], {
+  // goTo($event: any): void {
+  //   this.router.navigate(['/', 'favorites'], {
+  //     queryParams: {
+  //       key1: 'value1',
+  //       key2: 'value2',
+  //       key3: 'value3'
+  //     }
+  //   })
+  //   console.log($event)
+  // }
+
+  goTo($event, url): void {
+    this.router.navigate(url);
+    console.log($event);
+    console.log(url);
+  }
+
+  goToLista($event, url, param): void {
+    this.router.navigate(url, {
       queryParams: {
-        key1: 'value1',
-        key2: 'value2',
-        key3: 'value3'
+        lista: param
       }
     })
-    console.log($event)
   }
 }

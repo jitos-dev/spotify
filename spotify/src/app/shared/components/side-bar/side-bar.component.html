@@ -2,7 +2,7 @@
   <div><i class="uil uil-ellipsis-h"></i></div>
   <ul class="side-bar__list list-one">
     <li [routerLink]="item.router" [queryParams]="item.query" *ngFor="let item of mainMenu.defaultOptions">
-      <!-- <span>{{item.router}}</span> -->
+      <!-- <li (click)="goTo($event, item.router)" *ngFor="let item of mainMenu.defaultOptions"> -->
       <div class="list-wrapper-item">
         <i [ngClass]="['uil',item.icon]"></i>
         <span class="side-bar__list list-label">{{item.name}}</span>
@@ -18,9 +18,11 @@
       </div>
     </li>
   </ul>
+
+  <!--Parte de abajo que pone lo de Mi lista 1, Mi lista 2...-->
   <div class="side-bar__separator line-separator"></div>
   <ul class="side-bar__list list-three">
-    <li *ngFor="let item of customOptions">
+    <li *ngFor="let item of customOptions" (click)="goToLista($event, item.router, item.name)">
       <div class="list-wrapper-item">
         <span class="side-bar__list list-label">{{item.name}}</span>
       </div>
