@@ -1,11 +1,12 @@
 <div class="play-list-body">
   <ul class="play-list-table-header">
     <li (click)="changeSort('name')">Nombre ❤</li>
-    <li (click)="changeSort('album')">álbum 🆗</li>
-    <li>fecha incorporación 🍌😁</li>
+    <li (click)="changeSort('album')">Álbum 🆗</li>
+    <li>Fecha incorporación 🍌😁</li>
     <li><i class="uil uil-clock-eight"></i></li>
   </ul>
-  <ul class="play-list-rows" *ngFor="let track of tracks">
+  <ul class="play-list-rows" *ngFor="let track of tracks | orderList : optionSort.orderby : optionSort.sort">
+    <!--orderList es un PIPE que nos creamos nosotros poner arriba |orderList-->
     <!-- <ul class="play-list-rows" *ngFor="let track of tracks |orderList:optionSort.property:optionSort.order"> -->
     <li class="track-name">
       <ng-container *ngTemplateOutlet="coverSection;context:{track:track}"></ng-container>
