@@ -1,7 +1,7 @@
 <div class="play-list-body">
   <ul class="play-list-table-header">
-    <li (click)="changeSort('name')">Nombre ❤</li>
-    <li (click)="changeSort('album')">Álbum 🆗</li>
+    <li (click)="changeSort('name')"><span>Nombre ❤</span></li>
+    <li (click)="changeSort('album')"><span>Álbum 🆗</span></li>
     <li>Fecha incorporación 🍌😁</li>
     <li><i class="uil uil-clock-eight"></i></li>
   </ul>
@@ -29,7 +29,8 @@
 <ng-template #coverSection let-track="track">
 
   <div class="cover-section">
-    <img appImgBroken class="cover-track" [src]="track.cover" [alt]="track.name">
+    <img appImgBroken [customImg]="'../../../assets/images/img-broken.jpg'" class="cover-track" [src]="track.cover"
+      [alt]="track.name">
     <div class="cover-info">
       <div class="name-track">{{track.name}}</div>
       <div class="name-track-details">{{track.artist.name}}</div>

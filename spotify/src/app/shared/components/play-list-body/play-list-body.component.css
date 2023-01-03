@@ -21,6 +21,10 @@
   opacity: .7;
 }
 
+.play-list-table-header li span {
+  cursor: pointer;
+}
+
 .play-list-rows {
   width: 100%;
   list-style: none;
