@@ -13,9 +13,9 @@ export class TracksPageComponent implements OnInit, OnDestroy {
   listObservers$: Array<Subscription> = []
 
   constructor(private trackService: TrackService) {
-    const obserser1$ = this.trackService.dataTracksTrending$
+    const obserser1$ = this.trackService.getAllTracks$()
       .subscribe(response => {
-        this.mockTrackList = response
+        this.mockTrackList = response.data
       });
 
     this.listObservers$ = [obserser1$]

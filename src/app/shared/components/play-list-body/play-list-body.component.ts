@@ -19,9 +19,9 @@ export class PlayListBodyComponent implements OnInit, OnDestroy {
   optionSort: { orderby: string | null, sort: string } = { orderby: null, sort: 'asc' }
 
   constructor(private trackService: TrackService) {
-    const observer1$ = this.trackService.dataTracksTrending$
+    const observer1$ = this.trackService.getAllTracks$()
       .subscribe(response => {
-        this.tracks = response
+        this.tracks = response.data
       });
 
     this.listObservers$ = [observer1$]
