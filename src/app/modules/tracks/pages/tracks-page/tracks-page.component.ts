@@ -22,12 +22,7 @@ export class TracksPageComponent implements OnInit, OnDestroy {
     //const data: any = dataRaw.data
     //this.mockTrackList = dataRaw.data
 
-    const obserser1$ = this.trackService.getAllTracks$()
-      .subscribe(response => {
-        this.mockTrackList = response
-      });
-
-    //this.listObservers$ = [obserser1$]
+    this.loadAllData();
   }
 
   ngOnDestroy(): void {
@@ -36,4 +31,23 @@ export class TracksPageComponent implements OnInit, OnDestroy {
     //this.listObservers$.forEach(subscription => subscription.unsubscribe())
   }
 
+  private loadAllData2(): void {
+    const obserser1$ = this.trackService.getAllTracks$()
+      .subscribe(response => {
+        this.mockTrackList = response
+      }, err => {
+        console.log('Error charge the data------>', err);
+      });
+
+    //this.listObservers$ = [obserser1$]
+  }
+
+  /*Esta es otra forma de cargar las canciones pero con una función asíncrona y las tratamos como
+  una promesa y de forma asyncrona. Ya depende de lo que queramos y lo que necesitemos*/
+  private async loadAllData(): Promise<any> {
+    const obserser1$ = await this.trackService.getAllTracks$().toPromise()
+      .then(res => { this.mockTrackList = res })
+    //.catch(err => { console.log('Error charge the data in page------>', err) }) Ahora los errores los controlamos en el servicio
+    //this.listObservers$ = [obserser1$]
+  }
 }
