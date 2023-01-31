@@ -13,12 +13,7 @@ export class TracksPageComponent implements OnInit, OnDestroy {
   listObservers$: Array<Subscription> = []
 
   constructor(private trackService: TrackService) {
-    const obserser1$ = this.trackService.getAllTracks$()
-      .subscribe(response => {
-        this.mockTrackList = response.data
-      });
 
-    this.listObservers$ = [obserser1$]
   }
 
   ngOnInit() {
@@ -26,6 +21,13 @@ export class TracksPageComponent implements OnInit, OnDestroy {
     //const { data }: any = (dataRaw as any).default
     //const data: any = dataRaw.data
     //this.mockTrackList = dataRaw.data
+
+    const obserser1$ = this.trackService.getAllTracks$()
+      .subscribe(response => {
+        this.mockTrackList = response
+      });
+
+    this.listObservers$ = [obserser1$]
   }
 
   ngOnDestroy(): void {
