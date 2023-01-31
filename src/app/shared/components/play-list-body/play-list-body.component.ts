@@ -31,11 +31,13 @@ export class PlayListBodyComponent implements OnInit, OnDestroy {
         this.tracks = response
       });
 
-    this.listObservers$ = [observer1$]
+    //this.listObservers$ = [observer1$]
   }
 
   ngOnDestroy(): void {
-    this.listObservers$.forEach(unsubscribe => unsubscribe.unsubscribe());
+    /*Como el Observable es de tipo HttpClient no hace falta que nos desubscribamos porque
+    angular ya sabe que cuando se destruya el componente tiene que desubscribirse*/
+    //this.listObservers$.forEach(subscription => subscription.unsubscribe())
   }
 
   changeSort(orderby: string | null): void {

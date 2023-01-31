@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { filter, map, mergeMap, tap } from 'rxjs/operators'
+import { catchError, filter, map, mergeMap, tap } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import * as dataRaw from '@data/tracks.json';
@@ -39,6 +39,14 @@ export class TrackService {
       .pipe(
         map((dataRaw: any) => {
           return dataRaw.data
+        }),
+        catchError((err) => {
+          const { status, statusText } = err
+          console.log("Error en service-------> ", [status, statusText]);
+
+          //En real lo normal es mandar esto a algún sitio para registrar los errores
+
+          return of([])
         })
       )
   }
@@ -88,7 +96,11 @@ export class TrackService {
         mergeMap((data: any) => {
           return this.skipById(data.reverse(), 1)
         }),
-        tap((data) => console.log(data))
+        tap((data) => console.log(data)),
+        catchError((err) => {
+          console.log('Error charge the data------>', err)
+          return of([])
+        })
       )
   }
 }
