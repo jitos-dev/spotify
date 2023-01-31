@@ -19,17 +19,19 @@ export class PlayListBodyComponent implements OnInit, OnDestroy {
   optionSort: { orderby: string | null, sort: string } = { orderby: null, sort: 'asc' }
 
   constructor(private trackService: TrackService) {
-    const observer1$ = this.trackService.getAllTracks$()
-      .subscribe(response => {
-        this.tracks = response.data
-      });
 
-    this.listObservers$ = [observer1$]
   }
 
   ngOnInit() {
     // Inicializamos tracks con los valores del archivo de canciones
     //this.tracks = dataRaw.data
+
+    const observer1$ = this.trackService.getAllTracks$()
+      .subscribe(response => {
+        this.tracks = response
+      });
+
+    this.listObservers$ = [observer1$]
   }
 
   ngOnDestroy(): void {
