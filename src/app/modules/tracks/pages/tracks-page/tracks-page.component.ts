@@ -27,11 +27,13 @@ export class TracksPageComponent implements OnInit, OnDestroy {
         this.mockTrackList = response
       });
 
-    this.listObservers$ = [obserser1$]
+    //this.listObservers$ = [obserser1$]
   }
 
   ngOnDestroy(): void {
-    this.listObservers$.forEach(subscription => subscription.unsubscribe())
+    /*Como el Observable es de tipo HttpClient no hace falta que nos desubscribamos porque
+    angular ya sabe que cuando se destruya el componente tiene que desubscribirse*/
+    //this.listObservers$.forEach(subscription => subscription.unsubscribe())
   }
 
 }
