@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '@modules/auth/service/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-auth-page',
@@ -12,8 +14,11 @@ export class AuthPageComponent implements OnInit {
    * hace referencia a cada uno de los imput
    */
   formLogin: FormGroup = new FormGroup({});
+  errorSession: boolean = false
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private cookieService: CookieService) { }
 
   ngOnInit() {
     /**Dentro del constructor de FormControl podemos darle valor a los campos del formulario por ejemplo
@@ -45,7 +50,16 @@ export class AuthPageComponent implements OnInit {
 
   sendLogin(): void {
     //Con esto recogemos los valores del formulario cuando pinchamos en enviar. Devuelve un JSON
-    const body = this.formLogin.value;
+    const { email, password } = this.formLogin.value;
+
+    this.authService.sendCredentials(email, password)
+      .subscribe(responseOk => {
+        console.log("Sesión iniciada correctamente", responseOk);
+
+      }, error => {
+        this.errorSession = true
+        console.log("Los datos introducidos no son correctos", error);
+      })
   }
 
 }
