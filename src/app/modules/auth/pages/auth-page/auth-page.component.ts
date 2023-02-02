@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth-page',
@@ -13,7 +14,7 @@ export class AuthPageComponent implements OnInit {
    */
   formLogin: FormGroup = new FormGroup({});
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
     /**Dentro del constructor de FormControl podemos darle valor a los campos del formulario por ejemplo
@@ -46,6 +47,8 @@ export class AuthPageComponent implements OnInit {
   sendLogin(): void {
     //Con esto recogemos los valores del formulario cuando pinchamos en enviar. Devuelve un JSON
     const body = this.formLogin.value;
+
+    //const peticion$ = this.httpClient.post("", body)
   }
 
 }
